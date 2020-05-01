@@ -1,0 +1,16 @@
+server:
+  port: 9009
+  
+
+
+api:
+  key: JV6VI30GFW1QYSW8
+  timeSeriesMonthly: https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=JV6VI30GFW1QYSW8
+  symbolSearch: https://www.alphavantage.co/query?function=SYMBOL_SEARCH&
+  globalQuote: https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=JV6VI30GFW1QYSW8
+
+
+management:
+  endpoints:
+    web:
+      base-path: /  
