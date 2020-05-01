@@ -1,4 +1,4 @@
-package com.webapps.entity;
+package com.gajarla.restapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

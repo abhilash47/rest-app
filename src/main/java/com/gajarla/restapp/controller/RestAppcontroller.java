@@ -1,13 +1,16 @@
-package com.webapps.controller;
+package com.gajarla.restapp.controller;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.webapps.entity.BestMatches;
-import com.webapps.entity.Stock;
-import com.webapps.service.AppService;
+import com.gajarla.restapp.entity.BestMatches;
+import com.gajarla.restapp.entity.Stock;
+import com.gajarla.restapp.exception.ServiceRuntimeException;
+import com.gajarla.restapp.service.AppService;
 
 @RestController
 public class RestAppcontroller {
@@ -23,9 +26,15 @@ public class RestAppcontroller {
 	}
 	
 	@GetMapping("/best/{str}")
-	public Stock getBestString(@PathVariable(value = "str") String s) {
+	public Optional<Stock> getBestString(@PathVariable(value = "str") String s) {
 		
-		return service.getBestMatch(s);
+		Optional<Stock> response = service.getBestMatch(s);
+		
+		if(response.isPresent()) {
+			return response;
+		} else {
+			throw new ServiceRuntimeException("No Valid Match Found", "Check the name you entered");
+		}
 
 	}
 	
@@ -36,11 +45,10 @@ public class RestAppcontroller {
 			throw new RuntimeException("This is 500 error");
 		} 
 		if (s.equals("check400")) {
-			throw new RuntimeException("This is 400 error");
+			throw new ServiceRuntimeException("This is 400 error", "This is a custom exception");
 		} 
+		
 		return "Text is : " + s;
 	}
-	
-	
 	
 }

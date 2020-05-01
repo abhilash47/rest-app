@@ -1,4 +1,4 @@
-package com.webapps.gateway;
+package com.gajarla.restapp.gateway;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.webapps.entity.BestMatches;
+import com.gajarla.restapp.entity.BestMatches;
 
 @Component
 public class AppGateway {
